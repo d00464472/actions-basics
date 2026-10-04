@@ -2,14 +2,26 @@ name: hello world
 
 on:
   push:
-      branches:
-          - main
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-   hello:
-      runs-on: ubuntu-latest
+  hello:
+    runs-on: ubuntu-latest
 
-      steps:
-      - uses: actions/checkout@v2
-      - name: run echo
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run echo
         run: echo "Hello, world!"
+
+      - name: Show repository files
+        run: ls -la
+
+      - name: Show current date
+        run: date
+
+      - name: Finish
+        run: echo "GitHub Action completed successfully!"
